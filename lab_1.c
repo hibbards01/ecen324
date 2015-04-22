@@ -9,6 +9,7 @@
 ************************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>
 #define PI 3.1415926
 
 /***********************************************************************
@@ -87,7 +88,50 @@ int main (void)
     // Create some code to output a table
     //
 
+    number = 97; // Starting at 97 because 'a' decimal number is that.
 
+    // Now for the for loop.
+    printf("\n\tOct   Dec   Hex   Char\n");
+    printf("\t----------------------\n");
+
+    for (int i = 0; i < 26; ++i, ++number)
+    {
+        printf("\t%-5o %-5d %-5x %c\n", number, number, number, number);
+    }
+
+    printf("\n");
+
+    //
+    // Now play with some pointers to finish up.
+    //
+
+    int *p1;
+    int *p2;
+
+    // Now allocate the memory
+    p1 = (int*)malloc(2 * sizeof(int));
+    *p1 = 42;
+    p2 = p1;
+
+    printf("*p1 == %d\n", *p1);
+    printf("*p2 == %d\n", *p2);
+
+    // Change p2
+    *p2 = 53;
+    printf("*p1 == %d\n", *p1);
+    printf("*p2 == %d\n", *p2);
+
+    // Allocate memory again.
+    p1 = (int*)malloc(2 * sizeof(int));
+    *p1 = 88;
+
+    printf("*p1 == %d\n", *p1);
+    printf("*p2 == %d\n", *p2);
+
+    free(p1);
+    free(p2);
+
+    printf("Hope you got the point of this example!\n");
 
     return 0;
 }
